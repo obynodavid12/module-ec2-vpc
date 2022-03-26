@@ -5,7 +5,7 @@ resource "aws_key_pair" "valueup_key" {
   public_key    = file(var.public_key_path)
 }
 
-#Secutiry Group for Instances
+#Security Group for Instances
 resource "aws_security_group" "allow-ssh" {
   vpc_id      = var.VPC_ID
   name        = "allow-ssh-${var.ENVIRONMENT}"
