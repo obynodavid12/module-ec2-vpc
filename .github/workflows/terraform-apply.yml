@@ -35,7 +35,7 @@ jobs:
    
     - name: development directory
       run: |
-        cd development
+        cd ./development
       #working-directory: module-ec2-vpc/development/
       
           
