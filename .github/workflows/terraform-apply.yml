@@ -26,7 +26,7 @@ jobs:
     # Checkout the repository to the GitHub Actions runner
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@master
     - name: development directory
       run: ls -R
       working-directory: ${{env.working-directory}}
@@ -41,10 +41,6 @@ jobs:
       with:
         cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
    
-    #- name: development directory
-    #  run: |
-    #    cd module-ec2-vpc/development
-    #  #working-directory: module-ec2-vpc/development/
       
           
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
