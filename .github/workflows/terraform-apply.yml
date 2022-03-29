@@ -16,6 +16,7 @@ jobs:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_KEY_ID }}
       AWS_SECRET_KEY_ACCESS_KEY: ${{ secrets.AWS_SECRET_ID }}
       AWS_REGION: 'us-east-2'
+      working-directory: ./development
 
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
     defaults:
@@ -26,6 +27,13 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+    - name: development directory
+      run: ls -R
+      working-directory: ${{env.working-directory}}
+    - name: production directory
+      run: |
+         ls -R
+      working-directory: ${{env.working-directory}}   
 
     # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
     - name: Setup Terraform
@@ -33,10 +41,10 @@ jobs:
       with:
         cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
    
-    - name: development directory
-      run: |
-        cd module-ec2-vpc/development
-      #working-directory: module-ec2-vpc/development/
+    #- name: development directory
+    #  run: |
+    #    cd module-ec2-vpc/development
+    #  #working-directory: module-ec2-vpc/development/
       
           
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
