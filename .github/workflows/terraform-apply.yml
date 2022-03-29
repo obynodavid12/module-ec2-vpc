@@ -48,7 +48,7 @@ jobs:
       id: init 
       run: |
         terraform init
-      working-directory: development  
+      working-directory: "." 
       
     # Generates an execution plan for Terraform
     - name: Terraform Plan
@@ -56,7 +56,7 @@ jobs:
       if: github.event_name == 'push'
       run: |
         terraform plan -no-color
-        working-directory: development
+        working-directory: "."
       continue-on-error: true
 
    # - name: Terraform Plan Status 
@@ -70,4 +70,4 @@ jobs:
       if: github.ref == 'refs/heads/master' && github.event_name == 'push'
       run: |
         terraform apply -auto-approve
-        working-directory: development
+        working-directory: "."
