@@ -1,9 +1,12 @@
-name: "Terraform-Apply-Infra-Plan"
-
+name: "Terraform Deployment"
 on:
+  # Manual trigger
+  workflow_dispatch:
   push:
-    branches:
-    - main
+    paths:
+      - '*/**'
+  pull_request:
+    branches: [ main ]
 
 jobs:
   terraform:
