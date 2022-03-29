@@ -21,7 +21,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: development
+        working-directory: module-ec2-vpc
 
     # Checkout the repository to the GitHub Actions runner
     steps:
